@@ -1,0 +1,19 @@
+services:
+    php:
+        command: php artisan serve
+        container_name: laravel-orion-testing-php
+        image: pauloimon/php:cli
+        network_mode: host
+        volumes:
+            - ./:/usr/src/app
+        working_dir: /usr/src/app
+
+    mysql:
+        container_name: laravel-orion-testing-mysql
+        environment:
+            - MYSQL_ROOT_PASSWORD=secret
+            - MYSQL_DATABASE=laravel-orion-testing
+            - MYSQL_USER=docker
+            - MYSQL_PASSWORD=secret
+        image: mysql:latest
+        network_mode: host
